@@ -7,9 +7,11 @@ const app = express();
 
 app.set('PORT',8080);
 
+let ip = argv[2];
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-mongoose.connect('mongodb://localhost:27017/movies', function (err) {
+mongoose.connect('mongodb://' + ip + ':27017/movies', function (err) {
     if (err) {
         return console.log('Mongoose - connection error:', err);
     }
