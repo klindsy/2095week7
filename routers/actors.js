@@ -85,5 +85,19 @@ module.exports = {
                         res.json("Deleted actor and all associated movies: " + actor);
                 })
         });
-    }
+    },
+    mostMovies: function (req, res) {
+        // let query = { $size : movies };
+        let sort = { movies: -1 };  // highest
+
+        Actor.findOne({})
+            .sort(sort)
+            .exec(function (err, actor) {
+                if (err) {
+                    return res.status(404).json(err);
+                } else {
+                    res.json("actorWithMostMovies: " + actor.name);
+                }
+            });
+    },
 };

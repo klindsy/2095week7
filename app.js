@@ -22,6 +22,7 @@ mongoose.connect('mongodb://' + ip + ':27017/movies', function (err) {
 //Actor RESTFul endpoionts 
 app.get('/actors', actors.getAll);      // populates, Q7
 app.post('/actors', actors.createOne);
+app.get('/actors/mostmovies', actors.mostMovies);
 app.get('/actors/:id', actors.getOne);
 app.put('/actors/:id', actors.updateOne);
 app.post('/actors/:id/movies', actors.addMovie);
